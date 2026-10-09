@@ -1,0 +1,29 @@
+.plan-launch{display:flex;align-items:center;justify-content:space-between;gap:12px;background:#29352a;border:1px solid #526445;border-radius:5px;padding:12px 14px;margin-top:17px;color:#dbe5d4;font-size:12px}
+.plan-launch .primary-button{min-height:36px;padding:7px 12px;font-size:11px;white-space:nowrap}
+.campaign-strip{border:1px solid #455440;background:linear-gradient(100deg,#25352b,#1a2420);border-radius:8px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}
+.campaign-strip strong,.campaign-strip small{display:block}
+.campaign-strip strong{font:500 19px 'Cinzel',serif;margin:6px 0}
+.campaign-strip small{color:#a4b4a7;font-size:11px;line-height:1.5}
+.save-actions{display:flex;gap:8px;flex:none}
+.import-button{cursor:pointer;display:inline-flex;align-items:center}
+.import-button input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.adventure-left{display:grid;gap:20px;align-content:start}
+.session-panel .output-head{margin-bottom:13px}
+.session-list{display:grid;gap:7px;max-height:240px;overflow:auto}
+.session-choice{width:100%;background:#202b26;border:1px solid #35453b;border-radius:5px;color:#cbd7c9;padding:10px 11px;display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left}
+.session-choice:hover:not(:disabled),.session-choice.active{border-color:#bb985d;background:#2b382b}
+.session-choice strong{display:block;font-size:12px}
+.session-choice small{display:block;color:#91a194;font-size:10px;margin-top:3px}
+.session-choice .session-number{color:var(--gold);font:500 17px 'Cinzel',serif}
+.session-choice:disabled{opacity:.6}
+.session-empty{color:#91a193;font-size:11px;line-height:1.6;padding:12px 2px}
+.recap-field{margin-top:17px}
+.recap-field textarea{min-height:100px}
+.recap-actions{display:flex;gap:8px;margin:10px 0 17px}
+.session-summary{border:1px solid #3a4a3d;border-radius:5px;background:#1f2b24;margin:0 0 17px;padding:10px 12px}
+.session-summary summary{cursor:pointer;color:#dfc18b;font-size:11px;font-weight:700}
+.session-summary p{white-space:pre-wrap;color:#b4c2b4;font-size:11px;line-height:1.6;margin:10px 0 0}
+.session-panel .helper{margin:0;color:#85978a}
+.transcript-panel{min-height:660px}
+@media(max-width:760px){.campaign-strip{align-items:flex-start;flex-direction:column}}
+@media(max-width:440px){.plan-launch{align-items:flex-start;flex-direction:column}.save-actions{width:100%}}

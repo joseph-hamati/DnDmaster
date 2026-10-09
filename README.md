@@ -15,9 +15,11 @@ For a project repository the URL is usually `https://YOUR-USERNAME.github.io/REP
 1. Create a Gemini API key in [Google AI Studio](https://aistudio.google.com/apikey).
 2. Open **API & voice settings** and paste your key. The key is stored in `sessionStorage`, so it lasts for that browser tab session; it is never bundled into the site.
 3. Fill out the campaign brief, upload character sheets (PDF, PNG, JPEG, WebP, TXT, MD, or JSON), and select **Forge the campaign**.
-4. Review the campaign bible, download it as Markdown or JSON if you want a backup, then open **Live adventure** and select **Begin adventure**. Allow microphone access. A headset helps avoid echo.
+4. Review the campaign bible, then select **Play this world**. Select **Begin adventure** and allow microphone access. A headset helps avoid echo.
+5. End the live connection when you finish playing. The app saves that session's chronicle and creates an AI recap. Use **+ New session** when you return for the next game. The live DM receives the original campaign bible, earlier session recaps, and the current session's notes and recent chronicle.
+6. Use **Export save** to keep a portable JSON backup of the world and all sessions. **Import save** restores it in another browser or device. The API key is never included in the export.
 
-The campaign bible and live transcript are stored locally in your browser. Uploaded sheet files are held in memory until you refresh the page, and sent to Gemini when you forge a campaign. Reconnects include recent transcript context. The planning and voice model names are editable in Settings because preview model availability can change.
+The campaign bible, session chronicle, notes, and recaps are stored locally in your browser. They are not synced by GitHub Pages, so export a save before clearing browser data or changing devices. Uploaded sheet files are held in memory until you refresh the page, and sent to Gemini when you forge a campaign. The planning and voice model names are editable in Settings because preview model availability can change.
 
 ## Key security
 
