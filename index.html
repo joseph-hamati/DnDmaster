@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101515">
+  <meta name="description" content="Forge a character-driven D&D campaign and play with a live-voice AI Dungeon Master.">
+  <title>Ember & Ink — AI Dungeon Master</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#top" aria-label="Ember and Ink home"><span class="brand-mark">✦</span><span><strong>EMBER <em>&</em> INK</strong><small>YOUR AI DUNGEON MASTER</small></span></a>
+      <div class="sidebar-label">YOUR TABLE</div>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-view="workshop"><span>◈</span> Campaign workshop</button>
+        <button class="nav-item" data-view="adventure"><span>✧</span> Live adventure</button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-card"><span class="sidebar-card-icon">✦</span><strong>A world waits for your party.</strong><p>Give your heroes a story worth telling.</p></div>
+      <button class="settings-link" id="settingsOpen"><span>⚙</span> API & voice settings</button>
+      <div class="sidebar-foot">POWERED BY GEMINI <span>•</span> MADE FOR STORYTELLERS</div>
+    </aside>
+
+    <main id="top" class="main-content">
+      <header class="topbar"><div class="breadcrumbs">THE TABLE <span>/</span> <b id="crumb">CAMPAIGN WORKSHOP</b></div><div class="top-actions"><span class="status-pill" id="keyStatus"><i></i> API key needed</span><button class="icon-button" id="settingsTop" title="Settings" aria-label="Open settings">⚙</button></div></header>
+      <section id="workshopView" class="view">
+        <div class="hero"><div class="eyebrow"><span class="eyebrow-line"></span> THE CAMPAIGN WORKSHOP</div><h1>Every legend starts<br>with <em>a spark.</em></h1><p>Bring your characters. Choose your world. Let your Dungeon Master weave the adventure around the people at your table.</p><div class="hero-decoration" aria-hidden="true">✦</div></div>
+
+        <div class="workspace-grid">
+          <div class="left-column">
+            <section class="panel" aria-labelledby="campaignHeading"><div class="panel-heading"><div class="step-badge">01</div><div><div class="kicker">SET THE STAGE</div><h2 id="campaignHeading">Your campaign</h2></div></div>
+              <div class="field-grid"><label class="field full"><span>Campaign name</span><input id="campaignName" placeholder="The Ashen Crown" maxlength="100"></label><label class="field"><span>Setting</span><input id="setting" placeholder="A city built on ancient ruins" maxlength="180"></label><label class="field"><span>Starting level</span><select id="level"><option value="1">Level 1</option><option value="2">Level 2</option><option value="3" selected>Level 3</option><option value="4">Level 4</option><option value="5">Level 5</option><option value="6">Level 6</option><option value="7">Level 7</option><option value="8">Level 8</option><option value="9">Level 9</option><option value="10">Level 10</option><option value="11">Level 11</option><option value="12">Level 12</option><option value="13">Level 13</option><option value="14">Level 14</option><option value="15">Level 15</option><option value="16">Level 16</option><option value="17">Level 17</option><option value="18">Level 18</option><option value="19">Level 19</option><option value="20">Level 20</option></select></label><label class="field"><span>Tone</span><select id="tone"><option>Heroic fantasy</option><option>Dark mystery</option><option>Whimsical adventure</option><option>Political intrigue</option><option>Horror</option><option>Custom</option></select></label><label class="field"><span>Campaign length</span><select id="length"><option value="6">6 sessions</option><option value="10" selected>10 sessions</option><option value="16">16 sessions</option><option value="24">24 sessions</option></select></label><label class="field full"><span>What kind of story do you want?</span><textarea id="idea" rows="3" placeholder="A missing star, a kingdom on the brink, a secret only the party can uncover..."></textarea></label><label class="field full"><span>Boundaries & topics to avoid <small>(optional)</small></span><textarea id="boundaries" rows="2" placeholder="Keep the story comfortable for everyone at the table..."></textarea></label></div>
+            </section>
+            <section class="panel" aria-labelledby="sheetsHeading"><div class="panel-heading"><div class="step-badge">02</div><div><div class="kicker">MEET THE HEROES</div><h2 id="sheetsHeading">Character sheets</h2></div></div><p class="panel-copy">Upload sheets so the plot can grow from each hero's goals, bonds, flaws, and abilities.</p><label class="upload-zone" id="dropZone"><input id="fileInput" type="file" multiple accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.md,.json,application/pdf,image/png,image/jpeg,image/webp,text/plain,application/json"><span class="upload-glyph">⇧</span><strong>Drop character sheets here</strong><span>or <u>browse files</u> · PDF, image, TXT, MD, JSON · 15 MB each</span></label><div id="fileList" class="file-list" aria-live="polite"></div></section>
+            <button class="primary-button forge-button" id="forgeButton"><span>✦</span> Forge the campaign <span class="button-arrow">↗</span></button><p class="helper" id="forgeHint">Your AI Dungeon Master will create a detailed, character-driven campaign bible.</p>
+          </div>
+          <div class="right-column"><section class="panel campaign-output" aria-labelledby="outputHeading"><div class="output-head"><div><div class="kicker">THE STORY SO FAR</div><h2 id="outputHeading">Campaign bible</h2></div><div class="output-actions"><button class="small-button" id="downloadMarkdown" disabled title="Download as Markdown">↓ MD</button><button class="small-button" id="downloadJson" disabled title="Download as JSON">↓ JSON</button></div></div><div id="emptyPlan" class="empty-plan"><div class="empty-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><span>✦</span></div><h3>The pages are still blank</h3><p>Set the scene and add your heroes. Your campaign bible will appear here, ready for the first roll.</p></div><div id="planContent" class="plan-content hidden"><div id="planTabs" class="plan-tabs" role="tablist" aria-label="Campaign sections"><button class="active" data-tab="overview">Overview</button><button data-tab="sessions">Sessions</button><button data-tab="world">World & cast</button><button data-tab="secrets">DM notes</button></div><div id="planBody" class="plan-body"></div></div></section></div>
+        </div>
+      </section>
+
+      <section id="adventureView" class="view hidden"><div class="hero adventure-hero"><div class="eyebrow"><span class="eyebrow-line"></span> THE LIVE ADVENTURE</div><h1>The story is <em>yours to tell.</em></h1><p>Speak naturally with your Dungeon Master. The campaign bible becomes the foundation, and the world responds to every choice.</p></div><div class="adventure-grid"><section class="panel voice-panel"><div class="panel-heading"><div class="step-badge">✦</div><div><div class="kicker">GEMINI LIVE VOICE</div><h2>At the table</h2></div></div><div class="voice-orb-wrap"><div class="voice-orb" id="voiceOrb"><span>✦</span></div></div><div class="voice-state" id="voiceState">The table is waiting</div><p class="voice-substate" id="voiceDetail">Start a session to hear your Dungeon Master.</p><div class="voice-controls"><button class="primary-button" id="connectButton">Begin adventure <span>↗</span></button><button class="secondary-button" id="muteButton" disabled>Mute mic</button></div><p class="helper center">Allow microphone access when your browser asks. Headphones help prevent echo.</p></section><section class="panel transcript-panel"><div class="output-head"><div><div class="kicker">CHRONICLE</div><h2>At the table</h2></div><button class="small-button" id="clearLog">Clear</button></div><div id="transcript" class="transcript"><div class="transcript-empty">When your adventure begins, the words spoken at your table will appear here.</div></div><form id="messageForm" class="message-form"><input id="messageInput" placeholder="Or type your next move..." aria-label="Message to Dungeon Master"><button type="submit" aria-label="Send message">➤</button></form></section></div></section>
+    </main>
+  </div>
+
+  <dialog id="settingsDialog" class="settings-dialog"><form method="dialog"><div class="dialog-heading"><div><div class="kicker">YOUR CONNECTION</div><h2>API & voice settings</h2></div><button class="close-button" value="cancel" aria-label="Close settings">×</button></div><p>Use your own key from <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio ↗</a>. It stays in this browser session and is sent only to Google's Gemini API.</p><label class="field"><span>Gemini API key</span><input id="apiKey" type="password" placeholder="Paste your Google AI Studio key" autocomplete="off" spellcheck="false"></label><label class="field"><span>Planning model</span><input id="planningModel" value="gemini-2.5-flash" spellcheck="false"></label><label class="field"><span>Live voice model</span><input id="liveModel" value="gemini-2.5-flash-native-audio-preview-12-2025" spellcheck="false"></label><label class="field"><span>Dungeon Master voice</span><select id="voiceName"><option value="Puck">Puck — lively</option><option value="Kore">Kore — steady</option><option value="Charon">Charon — deep</option><option value="Aoede">Aoede — warm</option><option value="Fenrir">Fenrir — bold</option></select></label><div class="settings-note">GitHub Pages is public. Never put an API key in this site's code or repository. Browser calls expose your own key to your browser session; for a shared site with a private owner key, add a backend that issues short-lived tokens.</div><button class="primary-button settings-save" id="saveSettings" value="save">Save settings</button></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
